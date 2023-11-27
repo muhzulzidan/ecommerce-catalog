@@ -1,0 +1,174 @@
+/* src/assets/style/page.css */
+@import url('https://fonts.googleapis.com/css2?family=Your+Font+Family&display=swap');
+
+:root {
+  --color-primary: #5C6AC4;
+  --color-secondary: #706E6B;
+  --color-accent: #F49342;
+  --color-bg-men: #E3EDF7;
+  --color-bg-women: #F9EAF3;
+  --color-bg-unavailable: #F0F0F0;
+  --color-text: #333333;
+  /* Add any additional color variables needed */
+}
+
+body {
+  font-family: 'Your Font Family', sans-serif;
+  margin: 0;
+  padding: 0;
+  /* Set a default background color if needed */
+}
+
+/* Global button styling */
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.button-accent {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.button-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.product-display {
+    display: flex;
+    flex-direction: row; /* default to side-by-side */
+    flex-wrap: wrap; /* allow items to wrap as needed */
+    align-items: flex-start; /* align to the top */
+    justify-content: flex-start; /* align to the left */
+    width: 80%; /* Adjust based on design spec */
+    max-width: 1200px; /* Adjust based on design spec */
+    margin: 20px auto; /* Center the container */
+    padding: 20px; /* Adjust based on design spec */
+    background-color: var(--color-bg-default); /* Adjust as needed */
+}
+.product-content {
+  display: flex;
+  flex-direction: row; /* Align side by side for larger screens */
+  align-items: start;
+  justify-content: start;
+  background: #fff; /* Figma shows a white background for the product card */
+  border-radius: 20px; /* Rounded corners as seen in Figma */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow as seen in Figma */
+  overflow: hidden; /* Ensures content does not overflow rounded corners */
+  padding: 1rem; /* Spacing inside the card */
+}
+
+.product-image {
+  width: 40%; /* Adjust the size to match Figma */
+  object-fit: cover; /* Ensures the image covers the area properly */
+}
+
+.product-details {
+  width: 60%; /* Adjust the size to match Figma */
+  padding: 1rem; /* Spacing inside the details area */
+}
+
+.product-purchase-info {
+  display: flex;
+  justify-content: space-between; /* Align price and buttons on opposite ends */
+  align-items: center;
+}
+
+.product-actions {
+  display: flex;
+}
+
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.product-category {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+
+.product-description {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: var(--color-text-price);
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* Adjusted button styles */
+.btn-buy,
+.btn-next {
+    padding: 12px 24px; /* Adjust based on design spec */
+    margin: 0 10px; /* Space between buttons */
+    font-size: 1rem; /* Adjust based on design spec */
+    font-weight: bold; /* Adjust based on design spec */
+}
+
+.btn-buy {
+  background-color: var(--color-primary);
+}
+
+.btn-next {
+  background-color: var(--color-secondary);
+}
+
+/* Style the loader here */
+.loader {
+  /* Define your loader styles */
+}
+
+/* Style for product not available */
+.product-not-available {
+  /* Define styles for when the product is not available */
+}
+
+/* Add responsive design and other styles as needed */
+/* Use this media query to adjust layout for smaller screens */
+@media (max-width: 768px) {
+      .product-content {
+    flex-direction: column; /* Stack vertically on smaller screens */
+  }
+
+  .product-image,
+  .product-details {
+    width: 100%; /* Full width on smaller screens */
+  }
+  
+    .product-display {
+        flex-direction: column; /* stack on smaller screens */
+        align-items: center; /* center items on smaller screens */
+    }
+
+    .product-image {
+        max-width: 80%; /* full width on smaller screens */
+        margin: 0 0 20px 0; /* Adjust margin as needed */
+    }
+
+    .product-info {
+        max-width: 100%; /* full width on smaller screens */
+        text-align: center; /* center text on smaller screens */
+    }
+
+    .btn-buy,
+    .btn-next {
+        width: auto; /* full width on smaller screens */
+        margin: 10px 0; /* Adjust margin as needed */
+    }
+}
