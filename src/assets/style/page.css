@@ -7,6 +7,8 @@
   --color-accent: #F49342;
   --color-bg-men: #E3EDF7;
   --color-bg-women: #F9EAF3;
+  --color-button-women: #720060;
+  --color-button-men: #002772;
   --color-bg-unavailable: #F0F0F0;
   --color-text: #333333;
   /* Add any additional color variables needed */
@@ -18,6 +20,40 @@ body {
   padding: 0;
   /* Set a default background color if needed */
 }
+
+/* .product-content.men {
+  background-color: var(--color-bg-men);
+} */
+
+/* .product-content.women {
+  background-color: var(--color-bg-women);
+} */
+
+.product-actions .btn-buy.men {
+  background-color: var(--color-button-men);
+  color: #fff;
+}
+
+.product-actions .btn-buy.women {
+  background-color: var(--color-button-women);
+  color: #fff;
+}
+
+.product-not-available {
+  background-color: var(--color-bg-unavailable);
+  /* ... */
+}
+
+.product-actions .btn-next.men {
+  border: 1px solid var(--color-button-men);
+  border-color: var(--color-button-men);
+   color: var(--color-button-men);
+}
+.product-actions .btn-next.women {
+  border-color: var(--color-button-women);
+  color: var(--color-button-women);
+}
+
 
 /* Global button styling */
 .button {
@@ -66,23 +102,32 @@ body {
 }
 
 .product-image {
-  width: 40%; /* Adjust the size to match Figma */
+  width: 60%; /* Adjust the size to match Figma */
   object-fit: cover; /* Ensures the image covers the area properly */
 }
 
 .product-details {
+  height: 100%;
   width: 60%; /* Adjust the size to match Figma */
   padding: 1rem; /* Spacing inside the details area */
+      display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-purchase-info {
   display: flex;
   justify-content: space-between; /* Align price and buttons on opposite ends */
-  align-items: center;
+  align-items: start;
+  flex-direction:column;
 }
 
 .product-actions {
   display: flex;
+  gap: 1em;
+}
+.product-actions button{
+  margin: 0;
 }
 
 
@@ -91,6 +136,19 @@ body {
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 10px;
+}
+.product-title.men{
+  color: var(--color-button-men);
+}
+.product-title.women{
+  color: var(--color-button-women);
+}
+
+.product-image-container{
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
 }
 
 .product-category {
@@ -112,6 +170,63 @@ body {
   margin-bottom: 30px;
 }
 
+.product-not-available {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px; /* Adjust padding to match the design */
+  background-color: var(--color-bg-unavailable);
+  border-radius: 20px; /* Rounded corners as seen in Figma */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow as seen in Figma */
+  text-align: center;
+}
+
+.product-image-placeholder {
+  width: 100%;
+  height: 200px; /* Adjust height to match the design */
+  background-color: #e1e1e1; /* Placeholder color, adjust as needed */
+  margin-bottom: 20px;
+  border-radius: 10px; /* Optional: if the placeholder should have rounded corners */
+}
+
+.product-details-placeholder {
+  width: 100%;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-title-placeholder {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  /* margin-bottom: 20px; */
+}
+
+.product-description-placeholder {
+  width: 80%;
+  height: 100px; /* Adjust height to match the design */
+  background-color: #e1e1e1; /* Placeholder color, adjust as needed */
+  margin-bottom: 20px;
+  border-radius: 10px; /* Optional: if the placeholder should have rounded corners */
+}
+
+.product-actions .btn-next.unavailable {
+  background-color: transparent;
+  color: var(--color-bg-primary);
+  border: 2px solid var(--color-text);
+  padding: 12px 24px;
+  font-size: 1rem;
+  margin-top: 20px; /* Adjust margin to match the design */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-actions .btn-next.unavailable:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
 /* Adjusted button styles */
 .btn-buy,
 .btn-next {
@@ -125,9 +240,12 @@ body {
   background-color: var(--color-primary);
 }
 
-.btn-next {
-  background-color: var(--color-secondary);
+.btn-next  {
+  border: 1px solid #010101;
+  background:transparent;
+  border-radius: 5px;
 }
+
 
 /* Style the loader here */
 .loader {

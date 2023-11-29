@@ -1,26 +1,34 @@
 <template>
     <div v-if="product" :class="['product-display', productClass]">
         <div v-if="loading" class="loader"></div>
-        <div v-else class="product-content">
-            <img :src="product.image" :alt="product.title" class="product-image" />
+         <div v-else class="product-content" :class="productClass">
+            <div class="product-image-container">
+                <img :src="product.image" :alt="product.title" class="product-image" />
+            </div>
             <div class="product-details">
-                <h2 class="product-title">{{ product.title }}</h2>
+                <h2 class="product-title" :class="productClass">{{ product.title }}</h2>
                 <p class="product-category">{{ product.category }}</p>
                 <!-- Add the rating component here -->
                 <p class="product-description">{{ product.description }}</p>
                 <div class="product-purchase-info">
                     <p class="product-price">${{ product.price }}</p>
                     <div class="product-actions">
-                        <button class="btn-buy">Buy now</button>
-                        <button @click="fetchNextProduct" class="btn-next">Next product</button>
+                        <button class="btn-buy" :class="productClass">Buy now</button>
+                        <button @click="fetchNextProduct" class="btn-next" :class="productClass">Next product</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div v-else class="product-not-available">
-        <p>Product not available.</p>
-    </div>
+        <div class="product-image-placeholder"></div>
+        <div class="product-details-placeholder">
+          <div class="product-title-placeholder">This product is unavailable to show</div>
+          <div class="product-actions">
+            <button @click="fetchNextProduct" class="btn-next unavailable">Next product</button>
+          </div>
+        </div>
+      </div>
 </template>
 
 
@@ -36,15 +44,20 @@ export default {
     computed: {
         productClass() {
             if (!this.product) return 'unavailable';
-            return this.product.category === "men's clothing" ? 'men' : 'women';
+            return {
+                'men': this.product.category === "men's clothing",
+                'women': this.product.category === "women's clothing"
+            };
         },
     },
+
     mounted() {
         this.fetchProduct();
     },
     methods: {
         fetchProduct() {
             this.loading = true;
+            console.log(this.index, "index")
             fetch(`https://fakestoreapi.com/products/${this.index}`)
                 .then(response => response.json())
                 .then(data => {
